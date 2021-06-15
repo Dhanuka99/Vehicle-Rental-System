@@ -28,7 +28,7 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(ds);
         factoryBean.setJpaVendorAdapter(ap);
-        factoryBean.setPackagesToScan("lk.ijse.spring.entity");
+        factoryBean.setPackagesToScan("lk.dmax.spring.entity");
         return factoryBean;
     }
 

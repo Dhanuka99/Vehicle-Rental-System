@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -23,15 +23,16 @@ public class Customer {
 
     private String password;
 
-    private MultipartFile nicImg;
 
     private String drivingLicense;
 
-    private MultipartFile drivingLicenseImg;
 
     private String address;
 
     private int contactNo;
 
+    @OneToMany(targetEntity = Booking.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "cb_fk",referencedColumnName = "nic")
+    private List<Booking> bookingList;
 
 }
