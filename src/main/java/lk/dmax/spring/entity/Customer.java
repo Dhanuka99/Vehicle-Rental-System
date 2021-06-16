@@ -1,10 +1,7 @@
 package lk.dmax.spring.entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,16 +20,19 @@ public class Customer {
 
     private String password;
 
-
     private String drivingLicense;
-
 
     private String address;
 
     private int contactNo;
 
+//    //customer and booking 1 to many
     @OneToMany(targetEntity = Booking.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "cb_fk",referencedColumnName = "nic")
+    @JoinColumn(name = "Cb_fk",referencedColumnName = "CustomerNic")
     private List<Booking> bookingList;
 
+    //driver and customer m:m
+
+    @ManyToMany(mappedBy = "customerList")
+    private List<Driver> driverList;
 }

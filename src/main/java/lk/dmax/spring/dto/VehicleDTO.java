@@ -1,54 +1,24 @@
-package lk.dmax.spring.entity;
+package lk.dmax.spring.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "Vehicle")
-public class Vehicle {
+public class VehicleDTO {
 
-    @Id
     private String vehicleNo;
-
-
     private String brand;
-
     private String type;
-
     private int noOfPassenger;
-
     private String TransmissionType;
-
     private String fuelType;
-
     private double rentDurationPrice;
-
     private int dailyRate;
-
     private String freeKMforday;
-
     private double monthlyRate;
-
     private double freeKMForMonth;
-
     private double pricePerExtraKM;
-
-//    //booking and vehicle m:m relationship
-    @ManyToMany(mappedBy = "vehicleList")
-    private List<Booking> bookingList;
-
-    //driver and vehicle 1 to 1
-    @OneToOne
-    private Driver driver;
-
-    //vehicle and driver m:m
-    @ManyToMany(mappedBy = "vehicleList")
-    private List<Driver> driverList;
 }

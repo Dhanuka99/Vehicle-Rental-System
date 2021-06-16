@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.awt.print.Book;
 import java.util.List;
 
 @Entity
@@ -16,7 +15,7 @@ import java.util.List;
 public class Driver {
 
     @Id
-    private String driverId;
+    private String driverNic;
 
     private String driverName;
 
@@ -24,9 +23,27 @@ public class Driver {
 
     private String tel;
 
-    @OneToMany
+//    //booking and driver m:m relationship
+    @ManyToMany(mappedBy = "driverList")
     private List<Booking> bookingList;
 
+    //driver and customer m:m
 
+    @ManyToMany
+    @JoinTable(
+            name = "Customer_Driver",
+            joinColumns = @JoinColumn(name = "driverNic"),
+            inverseJoinColumns = @JoinColumn(name = "CustomerNic")
+    )
+    private List<Customer> customerList;
 
+    //vehicle and driver m:m
+
+    @ManyToMany
+    @JoinTable(
+            name = "Driver_Vehicle",
+            joinColumns = @JoinColumn(name = "driverNic"),
+            inverseJoinColumns = @JoinColumn(name = "vehicleNo")
+    )
+    private List<Vehicle> vehicleList;
 }

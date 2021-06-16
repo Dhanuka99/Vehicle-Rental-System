@@ -23,12 +23,14 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "lk.dmax.spring.repo")
 public class JPAConfig {
 
+
+
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource ds,JpaVendorAdapter ap){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds,JpaVendorAdapter ap){
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(ds);
         factoryBean.setJpaVendorAdapter(ap);
-        factoryBean.setPackagesToScan("lk.dmax.spring.entity");
+        factoryBean.setPackagesToScan("lk/dmax/spring/entity");
         return factoryBean;
     }
 
