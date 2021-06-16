@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class BookingDTO {
     private String vehicleNo;
 
-    private String driverId;
+    private String driverNic;
 
     private String bookingDate;
     private String returnDate;

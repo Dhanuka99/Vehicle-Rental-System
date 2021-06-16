@@ -5,6 +5,7 @@ import lk.dmax.spring.dto.BookingDTO;
 import lk.dmax.spring.dto.CustomerDTO;
 import lk.dmax.spring.entity.Booking;
 import lk.dmax.spring.entity.Customer;
+import lk.dmax.spring.exception.NotFoundException;
 import lk.dmax.spring.exception.ValidateException;
 import lk.dmax.spring.repo.BookingRepo;
 import lk.dmax.spring.repo.CustomerRepo;
@@ -18,6 +19,7 @@ import javax.transaction.Transactional;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -28,6 +30,7 @@ public class CustomerImpl implements CustomerService {
 
     @Autowired
     BookingRepo  bookingRepo;
+
 
     @Autowired
     ModelMapper mapper;
@@ -48,12 +51,31 @@ public class CustomerImpl implements CustomerService {
     }
 
     @Override
-    public List<BookingDTO> placeBooking(BookingDTO bookingDTO) {
-        List<Booking> all = (List<Booking>) bookingRepo.save(mapper.map(bookingDTO,Booking.class));
-        return mapper.map(all, new TypeToken<ArrayList<BookingDTO>>() {
-        }.getType());
+    public void deleteCustomer(String id) {
+        if (!customerRepo.existsById(id)){
+            throw new NotFoundException("No Customer For Delete");
+        }customerRepo.deleteById(id);
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String id) {
+        Optional<Customer> customer = customerRepo.findById(id);
+        if (customer.isPresent()){
+            return mapper.map(customer,CustomerDTO.class);
+        }return null;
 
     }
 
+    @Override
+    public ArrayList<CustomerDTO> getAllCustomers() {
 
+        List<Customer> allCustomers = customerRepo.findAll();
+        return mapper.map(allCustomers,new TypeToken<ArrayList<CustomerDTO>>(){}.getType());
+    }
+
+    @Override
+    public void placeBooking(BookingDTO bookingDTO) {
+        bookingRepo.save(mapper.map(bookingDTO, Booking.class));
+
+    }
 }

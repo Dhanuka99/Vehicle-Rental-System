@@ -1,6 +1,7 @@
 package lk.dmax.spring.controller;
 
 
+import lk.dmax.spring.dto.BookingDTO;
 import lk.dmax.spring.dto.CustomerDTO;
 import lk.dmax.spring.exception.NotFoundException;
 import lk.dmax.spring.service.CustomerService;
@@ -33,6 +34,13 @@ public class CustomerController {
             throw new NotFoundException("No id provided to update");
         }
         customerService.updateCustomer(dto);
+        return new ResponseEntity(new StandradResponse("200", "Done", dto), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "booking",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity booking(@RequestBody BookingDTO dto) {
+
+        customerService.placeBooking(dto);
         return new ResponseEntity(new StandradResponse("200", "Done", dto), HttpStatus.OK);
     }
 }
