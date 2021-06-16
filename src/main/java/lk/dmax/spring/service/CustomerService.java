@@ -7,4 +7,5 @@ public interface CustomerService {
     void saveCustomer(CustomerDTO dto);
 
 
+    void updateCustomer(CustomerDTO dto);
 }

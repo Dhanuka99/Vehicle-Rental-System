@@ -24,10 +24,17 @@ public class CustomerImpl implements CustomerService {
 
     @Override
     public void saveCustomer(CustomerDTO dto) {
-            if (customerRepo.existsById(dto.getNic())) {
+            if (customerRepo.existsById(dto.getCustomerNic())) {
                 throw new ValidateException("Customer Already Exist");
             }
             customerRepo.save(mapper.map(dto, Customer.class));
         }
+
+    @Override
+    public void updateCustomer(CustomerDTO dto) {
+        if(customerRepo.existsById(dto.getCustomerNic())){
+           customerRepo.save(mapper.map(dto,Customer.class));
+        }
+    }
 
 }

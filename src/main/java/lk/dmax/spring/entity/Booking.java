@@ -16,6 +16,13 @@ import java.util.List;
 public class Booking {
     @Id
     private String bookingId;
+    private String CustomerNic;
+    private String vehicleNo;
+    private String driverId;
+    private String bookingDate;
+    private String returnDate;
+    private String paymentStatus;
+    private double amount;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

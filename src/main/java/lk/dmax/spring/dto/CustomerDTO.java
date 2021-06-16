@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class CustomerDTO {
 
-    private String nic;
+    private String customerNic;
     private String name;
     private String email;
     private String password;

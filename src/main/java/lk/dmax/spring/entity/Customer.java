@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class Customer {
     @Id
-    private String nic;
+    private String CustomerNic;
 
     private String name;
 
