@@ -28,17 +28,7 @@ public class Vehicle {
 
     private String fuelType;
 
-    private double rentDurationPrice;
 
-    private int dailyRate;
-
-    private String freeKMforday;
-
-    private double monthlyRate;
-
-    private double freeKMForMonth;
-
-    private double pricePerExtraKM;
 
 //    //booking and vehicle m:m relationship
     @ManyToMany(mappedBy = "vehicleList")
