@@ -9,4 +9,8 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class PaymentImpl implements Payment {
+    @Override
+    public void savePayment() {
+
+    }
 }

@@ -17,6 +17,7 @@ public class Vehicle {
     @Id
     private String vehicleNo;
 
+    private int vehicleStatus;
 
     private String brand;
 

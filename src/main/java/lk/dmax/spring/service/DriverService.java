@@ -1,6 +1,7 @@
 package lk.dmax.spring.service;
 
 import lk.dmax.spring.dto.DriverDTO;
+import org.springframework.data.jpa.repository.Query;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -16,4 +17,8 @@ public interface DriverService {
     ArrayList<DriverDTO> getAllDrivers();
 
     void deleteDriver(String id);
+
+    long countDriver();
+
+
 }

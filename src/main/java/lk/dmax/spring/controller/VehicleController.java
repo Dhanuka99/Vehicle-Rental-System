@@ -4,6 +4,7 @@ package lk.dmax.spring.controller;
 import lk.dmax.spring.dto.CustomerDTO;
 import lk.dmax.spring.dto.VehicleDTO;
 import lk.dmax.spring.exception.NotFoundException;
+import lk.dmax.spring.repo.VehicleRepo;
 import lk.dmax.spring.service.CustomerService;
 import lk.dmax.spring.service.VehicleService;
 import lk.dmax.spring.util.StandradResponse;
@@ -19,6 +20,9 @@ public class VehicleController {
 
     @Autowired
     VehicleService vehicleService;
+
+    @Autowired
+    VehicleRepo vehicleRepo;
 
     @PostMapping(path="save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity saveVehicle(@RequestBody VehicleDTO vehicleDTO){

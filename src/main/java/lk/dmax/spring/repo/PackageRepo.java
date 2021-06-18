@@ -1,7 +1,7 @@
 package lk.dmax.spring.repo;
 
-import lk.dmax.spring.entity.VehiclePackage;
+import lk.dmax.spring.entity.Package;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PackageRepo extends JpaRepository<VehiclePackage,String> {
+public interface PackageRepo extends JpaRepository<Package,String> {
 }

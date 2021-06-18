@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("api/customer")
 public class CustomerController {
@@ -37,10 +39,23 @@ public class CustomerController {
         return new ResponseEntity(new StandradResponse("200", "Done", dto), HttpStatus.OK);
     }
 
-    @PostMapping(path = "booking",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity booking(@RequestBody BookingDTO dto) {
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+   public ResponseEntity searchCustomer(@PathVariable String id){
+        CustomerDTO customerDTO = customerService.searchCustomer(id);
+        return new ResponseEntity(new StandradResponse("200","Done",customerDTO),HttpStatus.OK);
+    }
 
-        customerService.placeBooking(dto);
-        return new ResponseEntity(new StandradResponse("200", "Done", dto), HttpStatus.OK);
+    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteCustomer(@RequestParam String id){
+        customerService.deleteCustomer(id);
+        return new ResponseEntity(new StandradResponse("200","Done",null),HttpStatus.OK);
+    }
+
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllCustomers(){
+        ArrayList<CustomerDTO> allCustomers = customerService.getAllCustomers();
+        return new ResponseEntity(new StandradResponse("200","Done",allCustomers),HttpStatus.OK);
+
     }
 }

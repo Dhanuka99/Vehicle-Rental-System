@@ -10,15 +10,16 @@ import lombok.NoArgsConstructor;
 public class VehicleDTO {
 
     private String vehicleNo;
+    private int vehicleStatus;
     private String brand;
     private String type;
     private int noOfPassenger;
     private String TransmissionType;
     private String fuelType;
-    private double rentDurationPrice;
-    private int dailyRate;
-    private String freeKMforday;
-    private double monthlyRate;
-    private double freeKMForMonth;
-    private double pricePerExtraKM;
+//    private double rentDurationPrice;
+//    private int dailyRate;
+//    private String freeKMforday;
+//    private double monthlyRate;
+//    private double freeKMForMonth;
+//    private double pricePerExtraKM;
 }

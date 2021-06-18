@@ -17,11 +17,15 @@ public class Driver {
     @Id
     private String driverNic;
 
+    private int driverStatus;
+
     private String driverName;
 
     private String address;
 
     private String tel;
+
+
 
 //    //booking and driver m:m relationship
     @ManyToMany(mappedBy = "driverList")

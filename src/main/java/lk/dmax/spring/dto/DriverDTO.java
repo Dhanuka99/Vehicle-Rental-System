@@ -17,6 +17,8 @@ public class DriverDTO {
 
     private String driverNic;
 
+    private int driverStatus;
+
     private String driverName;
 
     private String address;

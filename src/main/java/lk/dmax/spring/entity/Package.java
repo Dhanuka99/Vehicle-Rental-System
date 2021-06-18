@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class VehiclePackage {
+public class Package {
 
     @Id
     private String packageId;
