@@ -63,4 +63,9 @@ public class DriverServiceImpl implements DriverService {
             throw new NotFoundException("No Driver For Delete");
         }driverRepo.deleteById(id);
     }
+
+    @Override
+    public long countDriver() {
+        return 0;
+    }
 }

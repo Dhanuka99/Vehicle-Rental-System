@@ -3,6 +3,7 @@ package lk.dmax.spring.controller;
 import lk.dmax.spring.dto.BookingDTO;
 import lk.dmax.spring.dto.DriverDTO;
 import lk.dmax.spring.dto.VehicleDTO;
+import lk.dmax.spring.repo.BookingRepo;
 import lk.dmax.spring.repo.DriverRepo;
 import lk.dmax.spring.repo.VehicleRepo;
 import lk.dmax.spring.service.BookingService;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 @RequestMapping("api/booking")
 public class BookingController {
 
+    @Autowired
+    BookingRepo bookingRepo;
         @Autowired
         DriverRepo driverRepo;
         @Autowired
@@ -37,7 +40,7 @@ public class BookingController {
 
     @GetMapping(path = "availableDrivers",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllCustomers() {
-        ArrayList<DriverDTO> allCustomers = driverRepo.checkDriverAvailability();
+        ArrayList<DriverDTO> allCustomers = driverRepo.getAvailableDrivers();
         return new ResponseEntity(new StandradResponse("200", "Done", allCustomers), HttpStatus.OK);
     }
 
@@ -68,8 +71,12 @@ public class BookingController {
         }
 
 
+        bookingDTO.setBookingStatus(1);
+        int bookingStatus = bookingDTO.getBookingStatus();
 
-
+        // bookingService.saveBooking(new BookingDTO(lastid,));
+//public BookingDTO(String bookingDate, String bookingTime, String returnDate, String returnTime, String paymentStatus, String customerNic, ArrayList<String> vehiclesNoList, ArrayList<String> driverNicList) {
+        bookingService.saveBooking(new BookingDTO(bookingDate,bookingTime,returnDate,returnTime,bookingStatus,customerNic,vehiclesNoList,driverNicList));
     }
 
 }

@@ -48,7 +48,7 @@ public class DriverController {
 
     @GetMapping(path = "availableDrivers",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllCustomers() {
-        ArrayList<DriverDTO> allCustomers = driverRepo.checkDriverAvailability();
+        ArrayList<DriverDTO> allCustomers = driverRepo.getAvailableDrivers();
         System.out.println(allCustomers.toString());
         return new ResponseEntity(new StandradResponse("200", "Done", allCustomers), HttpStatus.OK);
     }

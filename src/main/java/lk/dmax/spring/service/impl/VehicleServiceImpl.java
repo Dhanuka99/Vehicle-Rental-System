@@ -1,8 +1,10 @@
 package lk.dmax.spring.service.impl;
 
+import lk.dmax.spring.dto.DriverDTO;
 import lk.dmax.spring.dto.VehicleDTO;
 import lk.dmax.spring.entity.Vehicle;
 import lk.dmax.spring.exception.NotFoundException;
+import lk.dmax.spring.repo.DriverRepo;
 import lk.dmax.spring.repo.VehicleRepo;
 import lk.dmax.spring.service.VehicleService;
 import org.modelmapper.ModelMapper;
@@ -21,15 +23,19 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Autowired
     VehicleRepo vehicleRepo;
+    @Autowired
+    DriverRepo driverRepo;
 
     @Autowired
     ModelMapper mapper;
 
     @Override
     public void saveVehicle(VehicleDTO vehicleDTO) {
+
         if (vehicleRepo.existsById(vehicleDTO.getVehicleNo())){
             throw new NotFoundException("Vehicle Already Exists.");
-        }vehicleRepo.save(mapper.map(vehicleDTO, Vehicle.class));
+        }
+        vehicleRepo.save(mapper.map(vehicleDTO, Vehicle.class));
     }
 
     @Override

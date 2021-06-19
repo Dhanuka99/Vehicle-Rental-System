@@ -14,17 +14,15 @@ import java.util.List;
 public class Booking {
     @Id
     @GeneratedValue
-    private String bookingId;
-
+    private int bookingId;
     private String vehicleNo;
-
     private String driverId;
-
     private String bookingDate;
+    private String bokingTime;
     private String returnDate;
+    private String returnTime;
+    private int bookingStatus;
 
-    private String paymentStatus;
-    private double amount;
 
 
 //    //booking and vehicle m:m relationship

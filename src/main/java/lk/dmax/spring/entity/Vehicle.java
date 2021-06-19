@@ -29,9 +29,25 @@ public class Vehicle {
 
     private String fuelType;
 
+    public Vehicle(String vehicleNo, String brand, String type, int noOfPassenger, String transmissionType, String fuelType) {
+        this.vehicleNo = vehicleNo;
+        this.brand = brand;
+        this.type = type;
+        this.noOfPassenger = noOfPassenger;
+        TransmissionType = transmissionType;
+        this.fuelType = fuelType;
+    }
 
+    public Vehicle(String vehicleNo, int vehicleStatus, String brand, String type, int noOfPassenger, String transmissionType) {
+        this.vehicleNo = vehicleNo;
+        this.vehicleStatus = vehicleStatus;
+        this.brand = brand;
+        this.type = type;
+        this.noOfPassenger = noOfPassenger;
+        TransmissionType = transmissionType;
+    }
 
-//    //booking and vehicle m:m relationship
+    //    //booking and vehicle m:m relationship
     @ManyToMany(mappedBy = "vehicleList")
     private List<Booking> bookingList;
 

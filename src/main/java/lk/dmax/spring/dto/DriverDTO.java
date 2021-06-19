@@ -32,8 +32,17 @@ public class DriverDTO {
     private List<Vehicle> vehicleList;
 
 
+    //signup driver
     public DriverDTO(String driverNic, String driverName, String address, String tel) {
         this.driverNic = driverNic;
+        this.driverName = driverName;
+        this.address = address;
+        this.tel = tel;
+    }
+
+    public DriverDTO(String driverNic, int driverStatus, String driverName, String address, String tel) {
+        this.driverNic = driverNic;
+        this.driverStatus = driverStatus;
         this.driverName = driverName;
         this.address = address;
         this.tel = tel;

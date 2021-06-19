@@ -6,7 +6,7 @@
               url="jdbc:mysql://localhost:3306/DMAX?createDatabaseIfNotExist=true"
               username="root"
               password="11356"
-              maxTotal="10"
-              initialSize="10">
+              maxTotal="2"
+              initialSize="2">
     </Resource>
 </Context>

@@ -21,7 +21,7 @@ public class BookingDTO {
     private String returnDate;
     private String returnTime;
 
-    private String paymentStatus;
+    private int bookingStatus;
     private double amount;
 
     private String customerNic;
@@ -38,5 +38,25 @@ public class BookingDTO {
         this.driverNicList = driverNicList;
     }
 
+    public BookingDTO(String bookingDate, String bookingTime, String returnDate, String returnTime, int bookingStatus, String customerNic, ArrayList<String> vehiclesNoList, ArrayList<String> driverNicList) {
+        this.bookingDate = bookingDate;
+        this.bookingTime = bookingTime;
+        this.returnDate = returnDate;
+        this.returnTime = returnTime;
+        this.bookingStatus = bookingStatus;
+        this.customerNic = customerNic;
+        this.vehiclesNoList = vehiclesNoList;
+        this.driverNicList = driverNicList;
+    }
 
+    public BookingDTO(String vehicleNo, String driverNic, String bookingDate, String bookingTime, String returnDate, String returnTime, int bookingStatus, String customerNic) {
+        this.vehicleNo = vehicleNo;
+        this.driverNic = driverNic;
+        this.bookingDate = bookingDate;
+        this.bookingTime = bookingTime;
+        this.returnDate = returnDate;
+        this.returnTime = returnTime;
+        this.bookingStatus = bookingStatus;
+        this.customerNic = customerNic;
+    }
 }
