@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,22 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class Package {
-
     @Id
     private String packageId;
-
     private double dailyRate;
-
     private double freeKMforday;
-
     private double monthlyRate;
-
     private double freeKMForMonth;
-
     private double pricePerExtraKM;
 
-    //    //pkg and vehicle 1 to many
-    @OneToMany(targetEntity = Vehicle.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "pv_fk",referencedColumnName = "packageId")
-    private List<Booking> bookingList;
+    @OneToMany(
+            mappedBy = "aPackage",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Vehicle> vehicles;
 }

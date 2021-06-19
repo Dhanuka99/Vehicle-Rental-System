@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 public class CustomerDTO {
 
     private String customerNic;
-    private String name;
-    private String email;
-    private String password;
-    private String drivingLicense;
-    private String address;
-    private int contactNo;
+    private String customerName;
+    private String customerAddress;
+    private String customerEmail;
+    private String customerTel;
+    private String customerPassword;
+    private String customerDrivingLicense;
 
 }

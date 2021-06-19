@@ -1,8 +1,6 @@
 package lk.dmax.spring.service.impl;
 
-import jdk.nashorn.internal.parser.Token;
 import lk.dmax.spring.dto.DriverDTO;
-import lk.dmax.spring.entity.Customer;
 import lk.dmax.spring.entity.Driver;
 import lk.dmax.spring.exception.NotFoundException;
 import lk.dmax.spring.repo.DriverRepo;

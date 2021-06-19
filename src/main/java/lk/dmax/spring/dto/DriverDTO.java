@@ -1,9 +1,9 @@
 package lk.dmax.spring.dto;
 
 
-import lk.dmax.spring.entity.Booking;
-import lk.dmax.spring.entity.Customer;
-import lk.dmax.spring.entity.Vehicle;
+import lk.dmax.spring.MtoM.Booking;
+import lk.dmax.spring.MtoM.Customer;
+import lk.dmax.spring.MtoM.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

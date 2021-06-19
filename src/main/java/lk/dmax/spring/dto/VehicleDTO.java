@@ -17,15 +17,7 @@ public class VehicleDTO {
     private String TransmissionType;
     private String fuelType;
     private String driverNic;
-
-    public VehicleDTO(String vehicleNo, String brand, String type, int noOfPassenger, String transmissionType, String fuelType) {
-        this.vehicleNo = vehicleNo;
-        this.brand = brand;
-        this.type = type;
-        this.noOfPassenger = noOfPassenger;
-        TransmissionType = transmissionType;
-        this.fuelType = fuelType;
-    }
+    private String packageId;
 
 
 

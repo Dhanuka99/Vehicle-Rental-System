@@ -1,6 +1,5 @@
 package lk.dmax.spring.service.impl;
 
-import com.sun.xml.bind.v2.runtime.reflect.Lister;
 import lk.dmax.spring.dto.PackageDTO;
 import lk.dmax.spring.entity.Package;
 import lk.dmax.spring.exception.NotFoundException;
@@ -28,14 +27,14 @@ public class VehiclePackageImpl implements VehiclePackage {
 
     @Override
     public void savePackage(PackageDTO packageDTO) {
-        if (packageRepo.existsById(packageDTO.getPackageId())){
+        if (packageRepo.existsById(String.valueOf(packageDTO.getPackageId()))){
             throw new NotFoundException("Package already Exists");
         }packageRepo.save(mapper.map(packageDTO, Package.class));
     }
 
     @Override
     public void updatePackage(PackageDTO packageDTO) {
-        if (packageRepo.existsById(packageDTO.getPackageId())){
+        if (packageRepo.existsById(String.valueOf(packageDTO.getPackageId()))){
             packageRepo.save(mapper.map(packageDTO, Package.class));
         }
     }

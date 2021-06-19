@@ -1,6 +1,5 @@
 package lk.dmax.spring.service.impl;
 
-import lk.dmax.spring.dto.DriverDTO;
 import lk.dmax.spring.dto.VehicleDTO;
 import lk.dmax.spring.entity.Vehicle;
 import lk.dmax.spring.exception.NotFoundException;

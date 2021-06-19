@@ -40,8 +40,9 @@ public class BookingController {
 
     @GetMapping(path = "availableDrivers",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllCustomers() {
-        ArrayList<DriverDTO> allCustomers = driverRepo.getAvailableDrivers();
-        return new ResponseEntity(new StandradResponse("200", "Done", allCustomers), HttpStatus.OK);
+      //  ArrayList<DriverDTO> allCustomers = driverRepo.getAvailableDrivers();
+       // return new ResponseEntity(new StandradResponse("200", "Done", allCustomers), HttpStatus.OK);
+        return null;
     }
 
     @PostMapping(path = "placeBooking",produces = MediaType.APPLICATION_JSON_VALUE)
