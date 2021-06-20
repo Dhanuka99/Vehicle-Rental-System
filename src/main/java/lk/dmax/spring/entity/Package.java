@@ -21,10 +21,4 @@ public class Package {
     private double freeKMForMonth;
     private double pricePerExtraKM;
 
-    @OneToMany(
-            mappedBy = "aPackage",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Vehicle> vehicles;
 }

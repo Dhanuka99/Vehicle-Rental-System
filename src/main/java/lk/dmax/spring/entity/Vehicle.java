@@ -18,16 +18,11 @@ public class Vehicle {
 
     @Id
     private String vehicleNo;
+    private String packageId;
     private int vehicleStatus;
     private String brand;
     private String type;
     private int noOfPassenger;
     private String TransmissionType;
     private String fuelType;
-
-    @ManyToOne
-    @JoinColumn(name = "Vehicle_package")
-    private Package aPackage;
-
-
 }
