@@ -20,5 +20,4 @@ public class Customer {
     private String customerTel;
     private String customerPassword;
     private String customerDrivingLicense;
-
 }
