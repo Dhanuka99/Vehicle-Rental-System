@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/customer")
 public class CustomerController {

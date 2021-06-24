@@ -11,15 +11,10 @@ import lombok.NoArgsConstructor;
 public class PackageDTO {
 
     private String packageId;
-
     private double dailyRate;
-
     private double freeKMforday;
-
     private double monthlyRate;
-
     private double freeKMForMonth;
-
     private double pricePerExtraKM;
 
 }
