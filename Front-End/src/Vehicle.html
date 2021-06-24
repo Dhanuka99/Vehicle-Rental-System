@@ -9,7 +9,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
-<body>
+<body onload="getID()">
 	<section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-sm-center h-100">
@@ -21,40 +21,73 @@
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Create an Account!</h1>
 							<form method="POST" id="Details" class="needs-validation" novalidate="" autocomplete="off">
+
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="name">Package ID</label>
-									<input id="id" type="text" class="form-control" name="name" value="" required autofocus>
+									<label class="mb-2 text-muted" for="vehicleNo">Vehicle No</label>
+									<input id="vehicleNo" type="text" class="form-control" name="name" value="" required autofocus>
 									<div class="invalid-feedback">
-										ID is required
+										Vehicle No is required
 									</div>
 								</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="brand">Brand</label>
-									<input id="brand" type="text" class="form-control" name="name" value="" required autofocus>
-									<div class="invalid-feedback">
-										Brand is required
+									<div class="mb-2 text-muted">
+										<label for="packageType">Package Type</label>
+										<select id="packageType" class="form-control mb-2 text-muted">
+											<option value="">Choose Package</option>
+										</select>
 									</div>
 								</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="type">Type</label>
-									<input id="type" type="text" class="form-control" name="name" value="" required autofocus>
-									<div class="invalid-feedback">
-										Type is required
-									</div>
+								<div class="mb-2 text-muted">
+									<label for="TransmissionType">Transmission Type</label>
+									<select id="TransmissionType" class="form-control mb-2 text-muted">
+										<option selected>Manual</option>
+										<option>Auto</option>
+									</select>
 								</div>
+								</div>
+
+
+
 								<div class="mb-3">
-									<div class="dropdown">
-										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-											<span class="caret"></span></button>
-										<ul class="dropdown-menu">
-											<li><a href="#">HTML</a></li>
-											<li><a href="#">CSS</a></li>
-											<li><a href="#">JavaScript</a></li>
-										</ul>
+									<div class="mb-2 text-muted">
+										<label for="brand">Vehicle Brand</label>
+										<select id="brand" class="form-control mb-2 text-muted">
+											<option selected>Suzuki</option>
+											<option>Toyota</option>
+											<option>Mercedes</option>
+											<option>BMW</option>
+											<option>Nissan</option>
+										</select>
 									</div>
 								</div>
+
+								<div class="mb-3">
+									<div class="mb-2 text-muted">
+										<label for="fuelType">Fuel Type</label>
+										<select id="fuelType" class="form-control mb-2 text-muted">
+											<option selected>Petrol</option>
+											<option>Diesel</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="mb-2 text-muted">
+										<label for="passenger">No Of Passenger</label>
+										<select id="passenger" class="form-control mb-2 text-muted">
+											<option selected>1</option>
+											<option >2</option>
+											<option >4</option>
+											<option >6</option>
+										</select>
+									</div>
+								</div>
+
+
+
 
 								<div class="align-items-center d-flex">
 									<button type="submit" class="btn btn-primary ms-auto" id="btnRegister">
@@ -117,6 +150,28 @@
 				}
 			});
 		});
+
+		function getID(){
+			var values = {};
+			$.ajax({
+				method: "GET",
+				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/package/getPackageID",
+				async: true,
+				contentType: 'application/json',
+				success: function (data) {
+					let val = data[2];
+					var $select = $('<select>'); //$('#down');
+					$select.find('option').remove();
+					$.each(val, function(key, value) {
+						$('<option>').val(key).text(value).appendTo($select);
+					});
+					console.log($select.html());
+
+				}
+			});
+
+
+		}
 	</script>
 </body>
 </html>

@@ -19,23 +19,59 @@
 					</div>
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
-							<h1 class="fs-4 card-title fw-bold mb-4">Create an Account!</h1>
-							<form method="POST" id="Details" class="needs-validation" novalidate="" autocomplete="off">
+							<h1 class="fs-4 card-title fw-bold mb-4">New Vehicle Package</h1>
+							<form method="POST" id="PackageDetails" class="needs-validation" novalidate="" autocomplete="off">
 
 								<div class="mb-3">
-									<div class="dropdown show">
-										<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Dropdown link
-										</a>
-										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="#">Action</a>
-											<a class="dropdown-item" href="#">Another action</a>
-											<a class="dropdown-item" href="#">Something else here</a>
-										</div>
+									<label class="mb-2 text-muted" for="packageID">Package ID</label>
+									<input id="packageID" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										package ID is required
 									</div>
 								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="dRate">Daily Rate</label>
+									<input id="dRate" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Daily Rate is required
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="FreeKMForDay">Free KM For Day</label>
+									<input id="FreeKMForDay" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Free KM is required
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="mRate">Monthly Rate</label>
+									<input id="mRate" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Monthly Rate is required
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="freeKMForMonth">Free KM For Month</label>
+									<input id="freeKMForMonth" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										Free KM is required
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="priceExtaKM">Price Per Extra KM</label>
+									<input id="priceExtaKM" type="text" class="form-control" name="name" value="" required autofocus>
+									<div class="invalid-feedback">
+										price is required
+									</div>
+								</div>
+
 								<div class="align-items-center d-flex">
-									<button type="submit" class="btn btn-primary ms-auto" id="btnRegister">
+									<button type="submit" class="btn btn-primary ms-auto" id="btnPackage">
 										Package
 									</button>
 								</div>
@@ -58,43 +94,31 @@
 	</section>
 
 	<script>
-		$("#btnRegister").click(function () {
+		$("#btnPackage").click(function () {
 
-			// private String packageId;
-			// private double dailyRate;
-			// private double freeKMforday;
-			// private double monthlyRate;
-			// private double freeKMForMonth;
-			// private double pricePerExtraKM;
-
-			let nic = $("#nic").val();
-			let name = $("#name").val();
-			let address = $("#address").val();
-			let email = $("#email").val();
-			let drLisence = $("#drNo").val();
-			let passwod = $("#password").val();
-			let tel = $("#tel").val();
-
+			let formdata = $("#PackageDetails").serialize();
 
 			$.ajax({
 				method: "POST",
-				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/customer/save",
+				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/package/save",
 				async: true,
 				contentType: 'application/json',
-				data: JSON.stringify({
-					customerNic: nic,
-					customerName: name,
-					customerAddress: address,
-					customerEmail: email,
-					customerTel: tel,
-					customerPassword: passwod,
-					customerDrivingLicense: drLisence,
-				}),
+				data: JSON.stringify(formdata),
 				success: function (data) {
 					console.log(data);
+					showAlerts();
+
 				}
 			});
 		});
+		function showAlerts(){
+			document.getElementById('bootstrap-alert').style.display = 'block';
+			setTimeout(function(){document.getElementById('bootstrap-alert').style.display = 'none'}, 1700);
+
+			//THIS IS JS ALERT
+			alert('success! (JS alert)');
+		}
 	</script>
+
 </body>
 </html>
