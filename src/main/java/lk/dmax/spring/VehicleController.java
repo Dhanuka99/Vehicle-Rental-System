@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/vehicle")
 public class VehicleController {
@@ -37,7 +38,7 @@ public class VehicleController {
             throw new NotFoundException("Vehicle No cannot be empty");
         }
         vehicleService.saveVehicle(vehicleDTO);
-        return new ResponseEntity(new StandradResponse("201", "Done", vehicleDTO), HttpStatus.CREATED);
+        return new ResponseEntity(new StandradResponse("200", "Done", vehicleDTO), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "update",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)

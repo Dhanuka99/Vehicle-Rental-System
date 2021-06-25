@@ -32,9 +32,11 @@
 
 								<div class="mb-3">
 									<div class="mb-2 text-muted">
-										<label for="packageType">Package Type</label>
-										<select id="packageType" class="form-control mb-2 text-muted">
-											<option value="">Choose Package</option>
+										<label for="down">Package Type</label>
+										<select id="down" class="form-control mb-2 text-muted">
+<!--											<option selected>Choose</option>-->
+<!--											<option value=""></option>-->
+
 										</select>
 									</div>
 								</div>
@@ -90,8 +92,8 @@
 
 
 								<div class="align-items-center d-flex">
-									<button type="submit" class="btn btn-primary ms-auto" id="btnRegister">
-										Package
+									<button type="submit" class="btn btn-primary ms-auto" id="btnVehicleRegister">
+										Register
 									</button>
 								</div>
 							</form>
@@ -113,37 +115,28 @@
 	</section>
 
 	<script>
-		$("#btnRegister").click(function () {
+		$("#btnVehicleRegister").click(function () {
 
-			// private String packageId;
-			// private double dailyRate;
-			// private double freeKMforday;
-			// private double monthlyRate;
-			// private double freeKMForMonth;
-			// private double pricePerExtraKM;
-
-			let nic = $("#nic").val();
-			let name = $("#name").val();
-			let address = $("#address").val();
-			let email = $("#email").val();
-			let drLisence = $("#drNo").val();
-			let passwod = $("#password").val();
-			let tel = $("#tel").val();
-
+			let vehicleNo = $("#vehicleNo").val();
+			let packageID = $("#down").val();
+			let TransmissionType = $("#TransmissionType").val();
+			let brand = $("#brand").val();
+			let fuelType = $("#fuelType").val();
+			let passenger = $("#passenger").val();
 
 			$.ajax({
+
 				method: "POST",
-				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/customer/save",
+				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/vehicle/save",
 				async: true,
 				contentType: 'application/json',
 				data: JSON.stringify({
-					customerNic: nic,
-					customerName: name,
-					customerAddress: address,
-					customerEmail: email,
-					customerTel: tel,
-					customerPassword: passwod,
-					customerDrivingLicense: drLisence,
+					vehicleNo: vehicleNo,
+					brand: brand,
+					noOfPassenger: passenger,
+					TransmissionType: TransmissionType,
+					fuelType: fuelType,
+					packageId: packageID,
 				}),
 				success: function (data) {
 					console.log(data);
@@ -151,27 +144,33 @@
 			});
 		});
 
-		function getID(){
-			var values = {};
+		function getID() {
 			$.ajax({
 				method: "GET",
 				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/package/getPackageID",
 				async: true,
 				contentType: 'application/json',
+				// success: function (data) {
+				// 	$.each(data.data, function (i, data) {
+				// 		alert(data.data + ":" + data.text);
+				// 		var div_data = "<option value=" + data.data+ ">" + data.text + "</option>";
+				// 		alert(div_data);
+				// 		$(div_data).appendTo('#down');
+				// 	});
+				//
+				// }
 				success: function (data) {
-					let val = data[2];
-					var $select = $('<select>'); //$('#down');
-					$select.find('option').remove();
-					$.each(val, function(key, value) {
-						$('<option>').val(key).text(value).appendTo($select);
-					});
-					console.log($select.html());
-
+					for(var i of data.data){
+						// console.log(i);
+						// alert(data.value + ":" + i);
+								var div_data = "<option>" + i + "</option>";
+								// alert(div_data);
+								$(div_data).appendTo('#down');
+					}
 				}
 			});
-
-
 		}
+
 	</script>
 </body>
 </html>

@@ -21,7 +21,6 @@ public class Vehicle {
     private String packageId;
     private int vehicleStatus;
     private String brand;
-    private String type;
     private int noOfPassenger;
     private String TransmissionType;
     private String fuelType;

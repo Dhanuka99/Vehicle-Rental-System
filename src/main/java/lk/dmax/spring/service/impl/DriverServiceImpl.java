@@ -3,6 +3,7 @@ package lk.dmax.spring.service.impl;
 import lk.dmax.spring.dto.DriverDTO;
 import lk.dmax.spring.entity.Driver;
 import lk.dmax.spring.exception.NotFoundException;
+import lk.dmax.spring.exception.ValidateException;
 import lk.dmax.spring.repo.DriverRepo;
 import lk.dmax.spring.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -27,9 +28,12 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void saveDriver(DriverDTO driverDTO) {
-       if (driverRepo.existsById(driverDTO.getDriverNic())){
-           throw new NotFoundException("Driver Not Found");
-       }driverRepo.save(mapper.map(driverDTO, Driver.class));
+        System.out.println("service start");
+       if (driverRepo.existsById((driverDTO.getDriverNic()))){
+           throw new ValidateException("Customer Already Exist");
+       }
+        System.out.println("save method");
+       driverRepo.save(mapper.map(driverDTO,Driver.class));
     }
 
     @Override

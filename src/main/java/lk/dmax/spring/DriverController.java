@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/driver")
 public class DriverController {
@@ -24,13 +25,16 @@ public class DriverController {
     @Autowired
     DriverRepo driverRepo;
 
-    @PostMapping(path="save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity saveDriver(@RequestBody DriverDTO driverDTO){
-        if (driverDTO.getDriverNic().trim().length() <= 0) {
+    @PostMapping(path="/save")
+    public ResponseEntity saveDriver(@RequestBody DriverDTO dto){
+        System.out.println("000000000000"+dto.toString());
+        if (dto.getDriverNic().trim().length() <= 0) {
             throw new NotFoundException("Driver id cannot be empty");
         }
-        driverService.saveDriver(driverDTO);
-        return new ResponseEntity(new StandradResponse("201", "Done", driverDTO), HttpStatus.CREATED);
+        System.out.println("11111"+dto.toString());
+        driverService.saveDriver(dto);
+        System.out.println("22222"+dto.toString());
+        return new ResponseEntity(new StandradResponse("201", "Done", dto), HttpStatus.OK);
     }
 
     @PutMapping(path = "update",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)

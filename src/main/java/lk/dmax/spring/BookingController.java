@@ -60,7 +60,7 @@ public class BookingController {
 
         for (String id:driverNicList) {
             driverDTO = driverService.searchDriver(id);
-            driverDTO.setDriverStatus(1);
+           // driverDTO.setDriverStatus(1);
             driverService.updateDriver(driverDTO);
             System.out.println(driverDTO.toString());
         }

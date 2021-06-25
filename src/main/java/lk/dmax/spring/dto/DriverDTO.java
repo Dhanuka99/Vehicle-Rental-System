@@ -8,43 +8,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class DriverDTO {
-
     private String driverNic;
-
-    private int driverStatus;
-
+    private String driverLicenseNo;
     private String driverName;
-
-    private String address;
-
-    private String tel;
-
-    private List<Booking> bookingList;
-
-    private List<Customer> customerList;
-
-    private List<Vehicle> vehicleList;
+    private String driverAddress;
+    private String driverTel;
 
 
-    //signup driver
-    public DriverDTO(String driverNic, String driverName, String address, String tel) {
-        this.driverNic = driverNic;
-        this.driverName = driverName;
-        this.address = address;
-        this.tel = tel;
-    }
+    //    private List<Booking> bookingList;
+//
+//    private List<Customer> customerList;
+//
+//    private List<Vehicle> vehicleList;
 
-    public DriverDTO(String driverNic, int driverStatus, String driverName, String address, String tel) {
-        this.driverNic = driverNic;
-        this.driverStatus = driverStatus;
-        this.driverName = driverName;
-        this.address = address;
-        this.tel = tel;
-    }
+
 }

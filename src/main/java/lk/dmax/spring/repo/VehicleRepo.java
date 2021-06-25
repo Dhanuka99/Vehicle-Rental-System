@@ -2,6 +2,9 @@ package lk.dmax.spring.repo;
 
 import lk.dmax.spring.entity.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.ArrayList;
 
 public interface VehicleRepo extends JpaRepository<Vehicle,String> {
 //
@@ -9,4 +12,7 @@ public interface VehicleRepo extends JpaRepository<Vehicle,String> {
 //    ArrayList<VehicleDTO> getAvailableVehicles();
 
    // long countByVehicleNo();
+
+    @Query("select v.vehicleNo from Vehicle v where v.vehicleStatus=0")
+    ArrayList getAllAvailableVehicleNo();
 }
