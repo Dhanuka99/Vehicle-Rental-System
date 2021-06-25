@@ -26,6 +26,8 @@ public class Booking {
 
 
 
+
+
 //    //booking and vehicle m:m relationship
 
     @ManyToMany
