@@ -12,7 +12,7 @@ public interface BookingService {
 
     ArrayList<BookingDTO> getAllBookings();
 
-    BookingDTO searchBooking();
+    BookingDTO searchBooking(int id);
 
     void deleteBooking(String id);
 }

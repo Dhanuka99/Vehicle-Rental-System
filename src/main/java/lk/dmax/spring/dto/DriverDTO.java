@@ -20,6 +20,8 @@ public class DriverDTO {
     private String driverAddress;
     private String driverTel;
 
+    private int driverStatus;
+
 
     //    private List<Booking> bookingList;
 //

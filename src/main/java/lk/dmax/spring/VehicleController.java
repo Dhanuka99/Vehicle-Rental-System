@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @CrossOrigin
 @RestController
 @RequestMapping("api/vehicle")
@@ -48,5 +50,11 @@ public class VehicleController {
         }
         vehicleService.updateVehicle(vehicleDTO);
         return new ResponseEntity(new StandradResponse("200", "Done", vehicleDTO), HttpStatus.OK);
+    }
+
+    @GetMapping("getAvailableVehicleNo")
+    public ResponseEntity getAllAvailableDriverNic(){
+        ArrayList allVehicleNo = vehicleRepo.getAllAvailableVehicleNo();
+        return new ResponseEntity(new StandradResponse("200", "Done", allVehicleNo), HttpStatus.OK);
     }
 }

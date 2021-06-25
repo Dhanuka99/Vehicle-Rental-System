@@ -96,14 +96,28 @@
 	<script>
 		$("#btnPackage").click(function () {
 
-			let formdata = $("#PackageDetails").serialize();
+			let packageId = $("#packageID").val();
+			let dRate = $("#dRate").val();
+			let FreeKMForDay = $("#FreeKMForDay").val();
+			let mRate = $("#mRate").val();
+			let freeKMForMonth = $("#freeKMForMonth").val();
+			let priceExtaKM = $("#priceExtaKM").val();
+
 
 			$.ajax({
 				method: "POST",
 				url: "http://localhost:8080/Vehicle_Rent_System_war_exploded/api/package/save",
 				async: true,
 				contentType: 'application/json',
-				data: JSON.stringify(formdata),
+				data: JSON.stringify({
+					packageId:packageId,
+					dailyRate:dRate,
+					freeKMforday:FreeKMForDay,
+					monthlyRate:mRate,
+					freeKMForMonth:freeKMForMonth,
+					pricePerExtraKM:priceExtaKM,
+
+				}),
 				success: function (data) {
 					console.log(data);
 					showAlerts();

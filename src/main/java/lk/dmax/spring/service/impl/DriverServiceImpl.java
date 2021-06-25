@@ -38,8 +38,12 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDTO driverDTO) {
-        if(driverRepo.existsById(driverDTO.getDriverNic())){
+        System.out.println("upppp");
+        if (driverRepo.existsById(driverDTO.getDriverNic())) {
             driverRepo.save(mapper.map(driverDTO, Driver.class));
+            System.out.println("dooooooo");
+        } else {
+            throw new RuntimeException("No such customer for update..!");
         }
     }
 

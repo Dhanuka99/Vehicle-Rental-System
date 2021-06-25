@@ -11,6 +11,6 @@ public interface DriverRepo extends JpaRepository<Driver,String> {
    // @Query("select d.driverNic,d.driverStatus,d.address,d.tel,d.driverName from Driver d where d.driverStatus=0")
    // ArrayList<Driver> getAvailableDrivers();
 
-    @Query("select d. from Package")
+    @Query("select d.driverNic from Driver d where d.driverStatus=0")
     ArrayList getAllAvailabeDriverNic();
 }

@@ -70,5 +70,12 @@ public class DriverController {
         return new ResponseEntity(new StandradResponse("200","Done",driverDTO),HttpStatus.OK);
     }
 
+    @GetMapping("getAvailableDriverID")
+    public ResponseEntity getAllAvailableDriverNic(){
+        ArrayList allDriverId = driverRepo.getAllAvailabeDriverNic();
+        System.out.println(allDriverId.get(0));
+        return new ResponseEntity(new StandradResponse("200", "Done", allDriverId), HttpStatus.OK);
+    }
+
 
 }

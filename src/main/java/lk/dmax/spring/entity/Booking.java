@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -15,11 +12,14 @@ import javax.persistence.Id;
 @Data
 public class Booking {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
-    private String customerNic;
-    private String vehicleNo;
-    private String driverNic;
+    @OneToOne
+    private Customer customerNic;
+    @OneToOne
+    private Vehicle vehicleNo;
+    @OneToOne
+    private Driver driverNic;
     private String bookingDate;
     private String bookingTime;
     private String bookingStatus;
